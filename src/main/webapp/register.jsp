@@ -7,7 +7,9 @@
 <body class="bg-gray-100">
 <nav class="bg-white p-4 shadow-md">
   <div class="container mx-auto flex justify-between items-center">
-    <a href="index.jsp" class="text-xl font-bold text-gray-800">Elite Car Services</a>
+    <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
+      <img src="images/logo.jpg" alt="Elite Car Services Logo" alt="Logo" width="75" height="15">
+      <h3> Elite Car Services </h3>
     <div>
       <a href="index.jsp" class="text-blue-500 hover:underline mr-4">Home</a>
       <a href="login.jsp" class="text-blue-500 hover:underline">Login</a>

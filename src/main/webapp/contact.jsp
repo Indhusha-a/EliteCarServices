@@ -7,7 +7,10 @@
 <body class="bg-gray-100">
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="index.jsp" class="text-xl font-bold text-gray-800">Elite Car Services</a>
+        <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
+            <img src="images/logo.jpg" alt="Elite Car Services Logo" alt="Logo" width="75" height="15">
+            <h3> Elite Car Services </h3>
+        </a>
         <div>
             <a href="index.jsp" class="text-blue-500 hover:underline mr-4">Home</a>
             <a href="login.jsp" class="text-blue-500 hover:underline mr-4">Login</a>
@@ -16,9 +19,9 @@
     </div>
 </nav>
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Contact Support</h1>
+    <h1 class="text-2xl font-bold mb-6">Contact Support</h1>
     <div class="bg-white p-6 rounded shadow-md mb-6">
-        <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
+        <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
         <p>We’re here to help! If you have any questions or need assistance, please reach out to us using the contact information below.</p>
         <div class="mt-4">
             <p><strong>Support Email:</strong> support@elitecarservices.com</p>

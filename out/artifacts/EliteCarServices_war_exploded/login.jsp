@@ -1,0 +1,56 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+  <title>Elite Car Services - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<nav class="bg-white p-4 shadow-md">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="index.jsp" class="text-xl font-bold text-gray-800">Elite Car Services</a>
+    <div>
+      <a href="index.jsp" class="text-blue-500 hover:underline mr-4">Home</a>
+      <a href="register.jsp" class="text-blue-500 hover:underline">Register</a>
+    </div>
+  </div>
+</nav>
+<div class="container mx-auto p-6 flex justify-center">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+    <%
+      String error = (String) session.getAttribute("error");
+      if (error != null) {
+    %>
+    <p class="text-center text-red-500 mb-4"><%= error %></p>
+    <%
+        session.removeAttribute("error");
+      }
+      String message = (String) session.getAttribute("message");
+      if (message != null) {
+    %>
+    <p class="text-center text-green-500 mb-4"><%= message %></p>
+    <%
+        session.removeAttribute("message");
+      }
+    %>
+    <form action="login" method="post">
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Email</label>
+        <input type="email" id="email" name="email" class="w-full p-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700">Password</label>
+        <input type="password" id="password" name="password" class="w-full p-2 border rounded" required>
+      </div>
+      <p class="text-center mb-4">
+        <a href="forgotPassword.jsp" class="text-blue-500 hover:underline">Forgot Password?</a>
+      </p>
+      <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Login</button>
+    </form>
+    <p class="mt-4 text-center">
+      Don't have an account? <a href="register.jsp" class="text-blue-500 hover:underline">Register</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

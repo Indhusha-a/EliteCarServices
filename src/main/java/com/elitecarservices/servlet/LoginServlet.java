@@ -18,9 +18,31 @@ import java.util.LinkedList;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+
+        // Handle adding a car
+        if ("addCar".equals(action)) {
+            User user = (User) session.getAttribute("user");
+            if (user != null) {
+                String carModel = request.getParameter("carModel");
+                String carYearStr = request.getParameter("carYear");
+                try {
+                    int carYear = Integer.parseInt(carYearStr);
+                    Car newCar = new Car(carModel, carYear);
+                    user.getCars().add(newCar);
+                    // Note: This only updates the in-memory user object; you'll need to persist to users.txt if required
+                } catch (NumberFormatException e) {
+                    session.setAttribute("error", "Invalid car year. Please enter a valid number.");
+                }
+            }
+            response.sendRedirect("dashboard.jsp");
+            return;
+        }
+
+        // Handle login
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        HttpSession session = request.getSession();
 
         // Read users from users.txt
         String usersFilePath = getServletContext().getRealPath("/WEB-INF/users.txt");

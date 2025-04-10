@@ -11,16 +11,14 @@
         }
 
         .bg {
-            /* The image used */
-            background-image: url("images/car3.jpeg");
-
             /* Full height */
             height: 100%;
-
             /* Center and scale the image nicely */
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            /* Smooth transition for background image */
+            transition: background-image 1s ease-in-out;
         }
     </style>
 </head>
@@ -33,5 +31,30 @@
         <a href="contact.jsp" class="bg-gray-500 text-white px-6 py-3 rounded hover:bg-gray-600">Contact Support</a>
     </div>
 </div>
+
+<script>
+    // Array of four background images
+    const images = [
+        "url('images/car3.jpeg')",
+        "url('images/car1.png')",
+        "url('images/car2.jpg')",
+        "url('images/car4.jpg')"
+    ];
+
+    let currentIndex = 0;
+    const body = document.querySelector('.bg');
+
+    // Function to change the background image
+    function changeBackground() {
+        currentIndex = (currentIndex + 1) % images.length; // Cycle through images
+        body.style.backgroundImage = images[currentIndex];
+    }
+
+    // Set the initial background image
+    body.style.backgroundImage = images[currentIndex];
+
+    // Change image every 5 seconds (5000 milliseconds)
+    setInterval(changeBackground, 5000);
+</script>
 </body>
 </html>

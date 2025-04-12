@@ -16,12 +16,12 @@
 %>
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
-            <img src="images/logo.jpg" alt="Elite Car Services Logo" width="75" height="15">
+        <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
+            <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
             <h3> Elite Car Services </h3>
         </a>
         <div>
-            <a href="logout" class="text-blue-500 hover:underline">Logout</a>
+            <a href="logout" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition" aria-label="Log out of your account">Logout</a>
         </div>
     </div>
 </nav>

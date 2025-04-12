@@ -7,14 +7,14 @@
 <body class="bg-gray-100">
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
-            <img src="images/logo.jpg" alt="Elite Car Services Logo" alt="Logo" width="75" height="15">
+        <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
+            <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
             <h3> Elite Car Services </h3>
         </a>
         <div>
-            <a href="index.jsp" class="text-blue-500 hover:underline mr-4">Home</a>
-            <a href="login.jsp" class="text-blue-500 hover:underline mr-4">Login</a>
-            <a href="register.jsp" class="text-blue-500 hover:underline">Register</a>
+            <a href="index.jsp" class="bg-orange-500 text-white px-6 py-3 rounded hover:bg-blue-600">Home</a>
+            <a href="login.jsp" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Login</a>
+            <a href="register.jsp" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">Register</a>
         </div>
     </div>
 </nav>

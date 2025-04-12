@@ -1,33 +1,49 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.elitecarservices.model.User" %>
 <%@ page import="com.elitecarservices.model.Car" %>
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-    <title>Car Service Packages - Econo Plus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Car Services - Econo Plus Package</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Emoji Styles from the Original Reference -->
+    <style type="text/css">
+        img.wp-smiley, img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 0.07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            line-height: 1.6;
+    </style>
+    <!-- Custom Styles for the Service Package Section -->
+    <style type="text/css">
+        .service-package {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
         }
-        h1 {
-            font-size: 24px;
-            color: #333;
+        .service-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
         }
-        h2 {
-            font-size: 20px;
-            color: #e30613; /* Red color similar to the image */
-            margin-top: 20px;
-        }
-        h3 {
-            font-size: 16px;
+        h5 {
             color: #e30613;
-            margin-top: 15px;
         }
         p {
-            font-size: 14px;
+            font-size: 18px; /* Updated for consistency */
             color: #333;
         }
         ul {
@@ -35,80 +51,101 @@
             padding-left: 0;
         }
         ul li {
-            font-size: 14px;
+            font-size: 18px; /* Increased for better readability */
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             position: relative;
-            padding-left: 20px;
+            padding-left: 25px;
         }
         ul li:before {
-            content: "✔"; /* Checkmark symbol to mimic the image */
+            content: "✔";
             color: #e30613;
             position: absolute;
             left: 0;
+            font-size: 18px;
+            line-height: 1;
         }
-        .order-now-btn {
-            display: block;
-            width: 150px;
-            padding: 10px;
-            margin: 20px 0;
-            background-color: #e30613;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .order-now-btn:hover {
-            background-color: #b50510;
-        }
-        .content {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body class="bg-gray-100">
+<!-- JSP Authentication Check -->
+<%
+    User user = (User) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 
-<!-- Top Navigation Panel -->
+<!-- Navigation Bar (Using Tailwind CSS) -->
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-        <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
-            <img src="images/logo.jpg" alt="Elite Car Services Logo" width="75" height="15">
+        <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
+            <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
             <h3> Elite Car Services </h3>
         </a>
         <div>
-            <a href="logout" class="text-blue-500 hover:underline">Logout</a>
+            <a href="logout" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition" aria-label="Log out of your account">Logout</a>
         </div>
     </div>
 </nav>
 
-<!-- Econo Plus Content -->
-<div class="content">
-    <h1>Car Service Packages – Econo Plus</h1>
-    <p>We believe it’s high time we revamp the ordinary lube service that we ourselves developed 30 years ago and we now offer 6 exclusive service packages covering all requirements from the entry level car up to Hybrid and even bespoke European brands while focusing on manufacturer standards throughout.</p>
+<!-- Main Content -->
+<div class="container mx-auto px-4 py-6">
+    <!-- Header Section -->
+    <header class="text-center mb-6">
+        <h1 class="text-4xl font-bold text-gray-800">Car Vehicle Service Packages - Econo Plus</h1>
+    </header>
 
-    <h2>Econo Plus</h2>
-    <p>Specifically targeted at all entry-level vehicle range covering the Auto Miraj exclusive 17-point inspection checklist which ensures that your car is mechanically in perfect order to conquer any road condition along with great peace of mind. Furthermore, the package is aimed at making it affordable yet ensuring the best value for money deal in town!</p>
+    <!-- Service Package Section -->
+    <section class="service-package">
+        <h2 class="text-4xl font-semibold text-blue-600 mb-4">Econo Plus Package</h2>
+        <p class="text-gray-700 leading-relaxed">
+            We believe it's high time to revamp the ordinary lube service that we pioneered 30 years ago.
+            The Econo Plus package offers a comprehensive service for your vehicle, ensuring it runs smoothly
+            with top-notch care and attention to detail. 🚗
+        </p>
+        <!-- Placeholder for the image -->
+        <img src="images/package1.png" alt="Econo Plus Package" class="service-image" width="450" height="450">
+        <br>
+        <hr>
+        <h5 class="text-2xl font-bold text-red-800">Includes:</h5>
+        <hr>
+        <br>
+        <ul>
+            <li>Oil & Filter change along with filter inspection</li>
+            <li>Preventive Maintenance</li>
+            <li>Wash & Vacuum</li>
+            <li>Aubrite Top Gloss Liquid Wax</li>
+            <li>Inspection Report – 17 points</li>
+        </ul>
 
-    <h3>Includes:</h3>
-    <ul>
-        <li>Oil & Filter change along with filter inspection</li>
-        <li>Preventive Maintenance</li>
-        <li>Wash & Vacuum</li>
-        <li>Aubrite Top Gloss Liquid Wax</li>
-        <li>Inspection Report – 17 points</li>
-    </ul>
-
-    <h3>Value Additions:</h3>
-    <ul>
-        <li>Battery Test Report</li>
-        <li>Scan Report</li>
-        <li>Battery Terminal Protector and Door Hinge Treatment</li>
-    </ul>
-
-    <a href="#" class="order-now-btn">Order Now</a>
+        <br>
+        <hr>
+        <h5 class="text-2xl font-bold text-red-800">Value Additions:</h5>
+        <hr>
+        <br>
+        <ul>
+            <li>Battery Test Report</li>
+            <li>Scan Report</li>
+            <li>Battery Terminal Protector and Door Hinge Treatment</li>
+        </ul>
+        <!-- Button Group -->
+        <div class="flex space-x-4 mt-4">
+            <a href="booking.jsp" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition" aria-label="Book the Econo Plus Package now">Book Now</a>
+            <a href="dashboard.jsp" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-700 transition" aria-label="Go back to the dashboard">Back</a>
+        </div>
+    </section>
 </div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white text-center py-4 mt-6">
+    <p>© <%= new java.util.Date().getYear() + 1900 %> Elite Car Services - Sri Lanka’s Largest and Best Auto Service Network</p>
+</footer>
 </body>
 </html>

@@ -28,6 +28,7 @@
     <div class="space-x-4">
         <a href="login.jsp" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Login</a>
         <a href="register.jsp" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">Register</a>
+        <a href="adminRegister.jsp" class="bg-purple-500 text-white px-6 py-3 rounded hover:bg-purple-600">Admin Register</a>
         <a href="contact.jsp" class="bg-gray-500 text-white px-6 py-3 rounded hover:bg-gray-600">Contact Support</a>
     </div>
 </div>

@@ -1,3 +1,0 @@
-
-
-testuser,test@gmail.com,077312344,bmw 2020:2022;toyota:2023;bmw :2020,1234

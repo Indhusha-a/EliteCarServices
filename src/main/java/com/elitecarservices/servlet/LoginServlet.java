@@ -17,6 +17,11 @@ import java.util.LinkedList;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     @Override
+    public void init() throws ServletException {
+        // Initialization if needed (e.g., loading users could go here, but currently handled in doPost)
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");

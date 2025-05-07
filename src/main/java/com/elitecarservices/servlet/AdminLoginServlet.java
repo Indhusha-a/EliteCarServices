@@ -39,7 +39,7 @@ public class AdminLoginServlet extends HttpServlet {
 
         if (admin != null) {
             session.setAttribute("admin", admin);
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("adminDashboard.jsp");
         } else {
             session.setAttribute("error", "Invalid admin email or password.");
             response.sendRedirect("adminLogin.jsp");

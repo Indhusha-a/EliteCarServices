@@ -22,7 +22,6 @@
       background: none !important;
       padding: 0 !important;
     }
-
   </style>
   <!-- Custom Styles for the Service Package Section -->
   <style type="text/css">
@@ -47,7 +46,7 @@
       color: #e30613;
     }
     p {
-      font-size: 18px; /* Updated for consistency */
+      font-size: 18px;
       color: #333;
     }
     ul {
@@ -55,7 +54,7 @@
       padding-left: 0;
     }
     ul li {
-      font-size: 18px; /* Increased for better readability */
+      font-size: 18px;
       color: #333;
       margin-bottom: 10px;
       position: relative;
@@ -85,7 +84,6 @@
     return;
   }
 %>
-
 <!-- Navigation Bar (Using Tailwind CSS) -->
 <nav class="bg-white p-4 shadow-md">
   <div class="container mx-auto flex justify-between items-center">
@@ -96,16 +94,14 @@
     <div>
       <a href="logout" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 transition" aria-label="Log out of your account">Logout</a>
     </div>
-  </div>
+  </div<"http://elitecarservices.com"> </div>
 </nav>
-
 <!-- Main Content -->
 <div class="container mx-auto px-4 py-6">
   <!-- Header Section -->
   <header class="text-center mb-6">
     <h1 class="text-4xl font-bold text-gray-800">Car Vehicle Service Packages - Auto Service Plus</h1>
   </header>
-
   <!-- Service Package Section -->
   <section class="service-package">
     <h2 class="text-4xl font-semibold text-blue-600 mb-4">Auto Service Plus Package</h2>
@@ -113,11 +109,9 @@
       Overlooking the Japanese Non-Hybrid vehicle range covering a 61-point inspection checklist ensuring all electronics as well as mechanical components are checked in order to give you a complete picture of your vehicle to make sure it is in top shape. Furthermore, our value-added services along with our service jobs are a first in the industry ensuring an unmatched service at all times
     </p>
     <!-- Placeholder for the image -->
-    <div class="container" >
-      <img src="images/package2.png" alt="Econo Plus Package" class="service-image" width="450" height="450">
-
+    <div class="container">
+      <img src="images/package2.png" alt="Auto Service Plus Package" class="service-image" width="450" height="450">
     </div>
-
     <br>
     <hr>
     <h5 class="text-2xl font-bold text-red-800">Includes:</h5>
@@ -130,7 +124,6 @@
       <li>Aubrite Top Gloss Liquid Wax</li>
       <li>Inspection Report -61 points</li>
     </ul>
-
     <br>
     <hr>
     <h5 class="text-2xl font-bold text-red-800">Value Additions:</h5>
@@ -143,12 +136,14 @@
     </ul>
     <!-- Button Group -->
     <div class="flex space-x-4 mt-4">
-      <a href="booking.jsp" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition" aria-label="Book the Econo Plus Package now">Book Now</a>
+      <form action="autoserviceplus" method="post">
+        <input type="hidden" name="packageName" value="Auto Service Plus">
+        <button type="submit" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition" aria-label="Book the Auto Service Plus Package now">Book Now</button>
+      </form>
       <a href="dashboard.jsp" class="inline-block bg-green-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-700 transition" aria-label="Go back to the dashboard">Back</a>
     </div>
   </section>
 </div>
-
 <!-- Footer -->
 <footer class="bg-gray-800 text-white text-center py-4 mt-6">
   <p>© <%= new java.util.Date().getYear() + 1900 %> Elite Car Services - Sri Lanka’s Largest and Best Auto Service Network</p>

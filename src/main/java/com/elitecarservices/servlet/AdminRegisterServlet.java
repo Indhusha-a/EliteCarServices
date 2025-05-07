@@ -13,17 +13,39 @@ import java.io.*;
 public class AdminRegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String idNumber = request.getParameter("idNumber");
         String contactNumber = request.getParameter("contactNumber");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
-        HttpSession session = request.getSession();
+        String specialCode = request.getParameter("specialCode");
+
+        // Validate special code
+        if (!"ELITE".equals(specialCode)) {
+            session.setAttribute("error", "Invalid special code.");
+            response.sendRedirect("adminRegister.jsp");
+            return;
+        }
 
         // Validate password match
         if (!password.equals(confirmPassword)) {
             session.setAttribute("error", "Passwords do not match.");
+            response.sendRedirect("adminRegister.jsp");
+            return;
+        }
+
+        // Validate email format
+        if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            session.setAttribute("error", "Invalid email format.");
+            response.sendRedirect("adminRegister.jsp");
+            return;
+        }
+
+        // Validate contact number
+        if (!contactNumber.matches("\\d{10,15}")) {
+            session.setAttribute("error", "Contact number must be 10-15 digits.");
             response.sendRedirect("adminRegister.jsp");
             return;
         }

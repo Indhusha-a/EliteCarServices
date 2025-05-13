@@ -13,8 +13,29 @@
 <head>
     <title>Elite Car Services - Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight-1 {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+        .animate-fadeInRight-2 {
+            animation: fadeInRight 1.2s ease-out 0.6s forwards;
+        }
+        .animate-fadeInRight-3 {
+            animation: fadeInRight 1.2s ease-out 0.9s forwards;
+        }
+        .animate-fadeInRight-4 {
+            animation: fadeInRight 1.2s ease-out 1.2s forwards;
+        }
+        .animate-fadeInRight-5 {
+            animation: fadeInRight 1.2s ease-out 1.5s forwards;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-100">
 <%
     com.elitecarservices.model.Admin admin = (com.elitecarservices.model.Admin) session.getAttribute("admin");
     if (admin == null) {
@@ -117,7 +138,7 @@
     <h1 class="text-3xl font-bold mb-6">Welcome, <%= admin.getName() != null ? admin.getName() : "Admin" %>!</h1>
 
     <!-- Messages -->
-    <div id="messages" class="mb-6">
+    <div id="messages" class="mb-6 animate-fadeInRight-1">
         <%
             String sessionMessage = (String) session.getAttribute("message");
             String sessionError = (String) session.getAttribute("error");
@@ -140,7 +161,7 @@
     </div>
 
     <!-- Users Table -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-fadeInRight-2">
         <h2 class="text-xl font-bold mb-4">Manage Users</h2>
         <div class="overflow-x-auto">
             <table class="w-full table-auto border-collapse">
@@ -204,7 +225,7 @@
     </div>
 
     <!-- Cars Section -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-fadeInRight-3">
         <h2 class="text-xl font-bold mb-4">Manage Cars</h2>
         <% if (users.isEmpty()) { %>
         <p class="text-gray-500">No users or cars found.</p>
@@ -259,7 +280,7 @@
     </div>
 
     <!-- Service Requests Section -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-fadeInRight-4">
         <h2 class="text-xl font-bold mb-4">Service Requests</h2>
         <%
             ServiceRequestList requestList = new ServiceRequestList();
@@ -378,7 +399,7 @@
     </div>
 
     <!-- Feedback Management Section -->
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-6 animate-fadeInRight-5">
         <h2 class="text-xl font-bold mb-4">Feedback Management</h2>
         <%
             if (feedbackList.isEmpty()) {

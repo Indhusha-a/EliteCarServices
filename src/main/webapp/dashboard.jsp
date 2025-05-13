@@ -11,8 +11,29 @@
 <head>
     <title>Elite Car Services - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight-1 {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+        .animate-fadeInRight-2 {
+            animation: fadeInRight 1.2s ease-out 0.6s forwards;
+        }
+        .animate-fadeInRight-3 {
+            animation: fadeInRight 1.2s ease-out 0.9s forwards;
+        }
+        .animate-fadeInRight-4 {
+            animation: fadeInRight 1.2s ease-out 1.2s forwards;
+        }
+        .animate-fadeInRight-5 {
+            animation: fadeInRight 1.2s ease-out 1.5s forwards;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-100">
 <%
     User user = (User) session.getAttribute("user");
     com.elitecarservices.model.Admin admin = (com.elitecarservices.model.Admin) session.getAttribute("admin");
@@ -26,7 +47,7 @@
     }
 %>
 <!-- Navigation Bar -->
-<nav class="bg-white p-4 shadow-md">
+<nav class="bg-white p-4 shadow-md w-full fixed top-0 z-10">
     <div class="container mx-auto flex justify-between items-center">
         <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
             <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
@@ -37,11 +58,11 @@
         </div>
     </div>
 </nav>
-<div class="container mx-auto p-6">
+<div class="container mx-auto p-6 mt-20">
     <h1 class="text-3xl font-bold mb-6">Welcome, <%= user.getName() %>!</h1>
 
     <!-- Profile Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-1">
         <h2 class="text-xl font-bold mb-4">Your Profile</h2>
         <p><strong>Email:</strong> <%= user.getEmail() %></p>
         <p><strong>Phone Number:</strong> <%= user.getPhoneNumber() %></p>
@@ -74,7 +95,7 @@
     </div>
 
     <!-- Cars Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-2">
         <h2 class="text-xl font-bold mb-4">Your Cars</h2>
         <%
             for (int i = 0; i < user.getCars().size(); i++) {
@@ -116,7 +137,7 @@
     </div>
 
     <!-- Order Packages Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-3">
         <h2 class="text-xl font-bold mb-4">Order Packages</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <a href="econoPlus.jsp" class="bg-gray-200 p-4 rounded text-center hover:bg-gray-300">
@@ -135,7 +156,7 @@
     </div>
 
     <!-- Service History Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-4">
         <h2 class="text-xl font-bold mb-4">Service History</h2>
         <%
             ServiceHistory history = new ServiceHistory();
@@ -257,7 +278,7 @@
     </div>
 
     <!-- Feedback and Review Management Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-5">
         <h2 class="text-xl font-bold mb-4">Feedback and Review Management</h2>
         <a href="feedback.jsp" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submit Feedback</a>
     </div>

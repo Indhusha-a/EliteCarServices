@@ -6,6 +6,21 @@
 <head>
     <title>Elite Car Services - Payment Invoice</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight-1 {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+        .animate-fadeInRight-2 {
+            animation: fadeInRight 1.2s ease-out 0.6s forwards;
+        }
+        .animate-fadeInRight-3 {
+            animation: fadeInRight 1.2s ease-out 0.9s forwards;
+        }
+    </style>
     <script>
         function toggleBankDetails() {
             const paymentOption = document.querySelector('input[name="paymentOption"]:checked').value;
@@ -14,8 +29,7 @@
         }
     </script>
 </head>
-<body class="bg-gray-100">
-<!-- Navigation Bar -->
+<body class="bg-blue-100">
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
         <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
@@ -27,10 +41,9 @@
         </div>
     </div>
 </nav>
-<!-- Main Content -->
 <div class="container mx-auto p-6 flex justify-center">
     <div class="bg-white p-6 rounded shadow-md w-full max-w-2xl">
-        <h2 class="text-2xl font-bold mb-4 text-center">Payment Invoice</h2>
+        <h2 class="text-2xl font-bold mb-4 text-center animate-fadeInRight-1">Payment Invoice</h2>
         <%
             User user = (User) session.getAttribute("user");
             if (user == null) {
@@ -40,7 +53,7 @@
             String error = (String) session.getAttribute("error");
             if (error != null) {
         %>
-        <p class="text-center text-red-500 mb-4"><%= error %></p>
+        <p class="text-center text-red-500 mb-4 animate-fadeInRight-1"><%= error %></p>
         <%
                 session.removeAttribute("error");
             }
@@ -52,7 +65,6 @@
             if (bookingReference == null) {
                 bookingReference = "N/A";
             }
-            // Set price and description based on package
             int price;
             String description;
             switch (packageName) {
@@ -76,12 +88,10 @@
                     price = 0;
                     description = "No description available for this package.";
             }
-            // Get current date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String invoiceDate = dateFormat.format(new Date());
         %>
-        <!-- Invoice Details -->
-        <div class="mb-6">
+        <div class="mb-6 animate-fadeInRight-2">
             <h3 class="text-xl font-semibold mb-2">Invoice Details</h3>
             <p><strong>Customer:</strong> <%= user.getName() %></p>
             <p><strong>Email:</strong> <%= user.getEmail() %></p>
@@ -89,20 +99,16 @@
             <p><strong>Booking Reference:</strong> <%= bookingReference %></p>
             <p><strong>Invoice Date:</strong> <%= invoiceDate %></p>
         </div>
-        <!-- Package Details -->
-        <div class="mb-6">
+        <div class="mb-6 animate-fadeInRight-2">
             <h3 class="text-xl font-semibold mb-2">Package Details</h3>
             <p><strong>Package:</strong> <%= packageName %></p>
             <p class="text-gray-700"><%= description %></p>
             <p class="mt-2"><strong>Price:</strong> Rs. <%= price %></p>
         </div>
-        <!-- Total Price -->
-        <div class="mb-6 text-center">
+        <div class="mb-6 text-center animate-fadeInRight-2">
             <h3 class="text-3xl font-bold text-blue-600">Total: Rs. <%= price %></h3>
         </div>
-        <!-- Payment Form -->
-        <form action="payment" method="post">
-            <!-- Payment Options -->
+        <form action="payment" method="post" class="animate-fadeInRight-3">
             <div class="mb-4">
                 <label class="block text-gray-700 mb-2">Payment Option</label>
                 <div class="flex flex-col">
@@ -120,7 +126,6 @@
                     </label>
                 </div>
             </div>
-            <!-- Bank Details (Hidden by Default) -->
             <div id="bankDetails" class="mb-4 hidden">
                 <label for="bankInfo" class="block text-gray-700">Bank Details</label>
                 <textarea id="bankInfo" class="w-full p-2 border rounded" rows="4" readonly>
@@ -130,17 +135,14 @@ Branch: Maharagama
 Name: Elite.services
                 </textarea>
             </div>
-            <!-- Payment Reference -->
             <div class="mb-4">
                 <label for="paymentReference" class="block text-gray-700">Payment Reference</label>
                 <input type="text" id="paymentReference" name="paymentReference" class="w-full p-2 border rounded" required>
             </div>
-            <!-- Hidden Fields -->
             <input type="hidden" name="packageName" value="<%= packageName %>">
             <input type="hidden" name="price" value="<%= price %>">
             <input type="hidden" name="invoiceDate" value="<%= invoiceDate %>">
             <input type="hidden" name="bookingReference" value="<%= bookingReference %>">
-            <!-- Proceed Button -->
             <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Proceed</button>
         </form>
     </div>

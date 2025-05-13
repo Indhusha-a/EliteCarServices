@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Car Services - Admin Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-blue-100 flex items-center justify-center min-h-screen">
 <!-- Navigation Bar -->
 <nav class="bg-white p-6 shadow-md w-full fixed top-0 z-10">
     <div class="container mx-auto flex justify-between items-center">
@@ -23,7 +32,7 @@
 </nav>
 <!-- Login Form -->
 <div class="container mx-auto mt-20 px-4">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg sm:max-w-md mx-auto">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg sm:max-w-md mx-auto animate-fadeInRight">
         <h2 class="text-2xl font-bold text-center mb-6">Admin Login</h2>
         <%
             String error = (String) session.getAttribute("error");

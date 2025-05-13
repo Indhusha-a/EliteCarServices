@@ -10,8 +10,20 @@
 <head>
     <title>Elite Car Services - Feedback</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight-1 {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+        .animate-fadeInRight-2 {
+            animation: fadeInRight 1.2s ease-out 0.6s forwards;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-100">
 <%
     User user = (User) session.getAttribute("user");
     com.elitecarservices.model.Admin admin = (com.elitecarservices.model.Admin) session.getAttribute("admin");
@@ -23,12 +35,8 @@
         response.sendRedirect("adminDashboard.jsp");
         return;
     }
-
-    // Path to feedback.txt in WEB-INF
     String feedbackFilePath = application.getRealPath("/WEB-INF/feedback.txt");
     ArrayList<String[]> feedbackList = new ArrayList<>();
-
-    // Load existing feedback from file
     try (BufferedReader reader = new BufferedReader(new FileReader(feedbackFilePath))) {
         String line;
         String userName = null;
@@ -59,10 +67,7 @@
             }
         }
     } catch (IOException e) {
-        // File may not exist yet; ignore
     }
-
-    // Handle feedback submission
     String feedbackMessage = null;
     String feedbackError = null;
     if ("POST".equalsIgnoreCase(request.getMethod()) && "submitFeedback".equals(request.getParameter("action"))) {
@@ -74,7 +79,6 @@
             String date = new Date().toString();
             String[] newFeedback = new String[]{userName, email, selectedPackage, feedbackText, date};
             feedbackList.add(newFeedback);
-            // Append to feedback.txt
             try (FileWriter writer = new FileWriter(feedbackFilePath, true)) {
                 writer.write("UserName: " + userName + "\n");
                 writer.write("Email: " + email + "\n");
@@ -89,15 +93,12 @@
             feedbackError = "Please select a package and enter feedback.";
         }
     }
-
-    // Handle feedback deletion
     if ("POST".equalsIgnoreCase(request.getMethod()) && "deleteFeedback".equals(request.getParameter("action"))) {
         int index;
         try {
             index = Integer.parseInt(request.getParameter("feedbackIndex"));
             if (index >= 0 && index < feedbackList.size()) {
                 feedbackList.remove(index);
-                // Rewrite feedback.txt
                 try (FileWriter writer = new FileWriter(feedbackFilePath)) {
                     for (String[] feedback : feedbackList) {
                         writer.write("UserName: " + feedback[0] + "\n");
@@ -118,7 +119,6 @@
         }
     }
 %>
-<!-- Navigation Bar -->
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
         <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
@@ -131,12 +131,9 @@
     </div>
 </nav>
 <div class="container mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Submit Feedback</h1>
-
-    <!-- Feedback and Review Management Section -->
-    <div class="bg-white p-6 rounded shadow-md mb-6">
+    <h1 class="text-3xl font-bold mb-6 animate-fadeInRight-1">Submit Feedback</h1>
+    <div class="bg-white p-6 rounded shadow-md mb-6 animate-fadeInRight-2">
         <h2 class="text-xl font-bold mb-4">Feedback and Review Management</h2>
-        <!-- Display Feedbacks -->
         <div id="feedback-display" class="mb-4">
             <%
                 if (feedbackMessage != null) {
@@ -175,7 +172,6 @@
                 }
             %>
         </div>
-        <!-- Feedback Form -->
         <form action="feedback.jsp" method="post" onsubmit="downloadFeedbackTxt()">
             <input type="hidden" name="action" value="submitFeedback">
             <div class="mb-4">
@@ -196,13 +192,9 @@
         </form>
     </div>
 </div>
-
-<!-- JavaScript for Feedback Download and Messages -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const feedbackMessages = document.getElementById('feedback-display');
-
-        // Function to download feedback as feedback.txt
         function downloadFeedbackTxt() {
             const userName = '<%= user.getName() %>';
             const email = '<%= user.getEmail() %>';
@@ -220,8 +212,6 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
-
-        // Hide messages after 3 seconds
         function hideMessages(container) {
             if (container && container.querySelector('p')) {
                 setTimeout(() => {
@@ -232,7 +222,6 @@
                 }, 3000);
             }
         }
-
         hideMessages(feedbackMessages);
     });
 </script>

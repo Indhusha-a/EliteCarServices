@@ -6,15 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elite Car Services - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-blue-100 flex items-center justify-center min-h-screen">
 <!-- Navigation Bar -->
 <nav class="bg-white p-6 shadow-md w-full fixed top-0 z-10">
   <div class="container mx-auto flex justify-between items-center">
     <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
-    <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
-    <h3> Elite Car Services </h3>
-  </a>
+      <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
+      <h3> Elite Car Services </h3>
+    </a>
     <div class="flex flex-col sm:flex-row gap-4">
       <a href="index.jsp" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">Home</a>
       <a href="adminRegister.jsp" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Register</a>
@@ -23,7 +32,7 @@
 </nav>
 <!-- Login Form -->
 <div class="container mx-auto mt-20 px-4">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg sm:max-w-md mx-auto">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg sm:max-w-md mx-auto animate-fadeIn">
     <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
     <%
       String error = (String) session.getAttribute("error");

@@ -9,7 +9,7 @@
   <div class="container mx-auto flex justify-between items-center">
     <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
       <img src="images/logo.jpg" alt="Elite Car Services Logo" class="h-12 w-auto">
-      <h3> Elite Car Services </h3>
+      <h3> Elite Car Service </h3>
     </a>
     <div>
       <a href="index.jsp" class="bg-orange-500 text-white px-6 py-3 rounded hover:bg-blue-600">Home</a>

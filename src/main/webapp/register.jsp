@@ -3,8 +3,17 @@
 <head>
   <title>Elite Car Services - Register</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fadeInRight {
+      animation: fadeInRight 1.2s ease-out 0.3s forwards;
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-100">
 <nav class="bg-white p-4 shadow-md">
   <div class="container mx-auto flex justify-between items-center">
     <a href="index.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
@@ -18,7 +27,7 @@
   </div>
 </nav>
 <div class="container mx-auto p-6 flex justify-center">
-  <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+  <div class="bg-white p-6 rounded shadow-md w-full max-w-md animate-fadeInRight">
     <h2 class="text-2xl font-bold mb-4 text-center">Register</h2>
     <%
       String error = (String) session.getAttribute("error");

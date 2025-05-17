@@ -5,6 +5,15 @@
 <head>
     <title>Elite Car Services - Booking</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
+    </style>
     <script>
         function toggleMileageInput(checkbox, carIndex) {
             const mileageInput = document.getElementById('mileage-' + carIndex);
@@ -21,8 +30,7 @@
         }
     </script>
 </head>
-<body class="bg-gray-100">
-<!-- Navigation Bar -->
+<body class="bg-blue-100">
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
         <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
@@ -34,9 +42,8 @@
         </div>
     </div>
 </nav>
-<!-- Main Content -->
 <div class="container mx-auto p-6 flex justify-center">
-    <div class="bg-white p-6 rounded shadow-md w-full max-w-md">
+    <div class="bg-white p-6 rounded shadow-md w-full max-w-md animate-fadeInRight">
         <h2 class="text-2xl font-bold mb-4 text-center">Book a Service</h2>
         <%
             User user = (User) session.getAttribute("user");
@@ -54,7 +61,6 @@
             String packageName = (String) session.getAttribute("packageName");
         %>
         <form action="booking" method="post">
-            <!-- User Details (Editable) -->
             <div class="mb-4">
                 <label for="name" class="block text-gray-700">Name</label>
                 <div class="flex items-center">
@@ -69,7 +75,6 @@
                     <button type="button" onclick="enableInput('phoneNumber')" class="ml-2 bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600">Change</button>
                 </div>
             </div>
-            <!-- Date and Time -->
             <div class="mb-4">
                 <label for="date" class="block text-gray-700">Date</label>
                 <input type="date" id="date" name="date" class="w-full p-2 border rounded" required>
@@ -78,12 +83,10 @@
                 <label for="time" class="block text-gray-700">Time</label>
                 <input type="time" id="time" name="time" class="w-full p-2 border rounded" required>
             </div>
-            <!-- Reference -->
             <div class="mb-4">
                 <label for="reference" class="block text-gray-700">Reference</label>
                 <input type="text" id="reference" name="reference" class="w-full p-2 border rounded" required>
             </div>
-            <!-- Car Selection and Mileage -->
             <div class="mb-4">
                 <label class="block text-gray-700">Select Cars</label>
                 <%
@@ -103,12 +106,10 @@
                     }
                 %>
             </div>
-            <!-- Anything Else -->
             <div class="mb-4">
                 <label for="anythingElse" class="block text-gray-700">Anything Else</label>
                 <textarea id="anythingElse" name="anythingElse" class="w-full p-2 border rounded" rows="4"></textarea>
             </div>
-            <!-- Branch Selection -->
             <div class="mb-4">
                 <label for="branch" class="block text-gray-700">Branch</label>
                 <select id="branch" name="branch" class="w-full p-2 border rounded" required>
@@ -117,12 +118,10 @@
                     <option value="Maharagama">Maharagama</option>
                 </select>
             </div>
-            <!-- Hidden Package Name -->
             <input type="hidden" name="packageName" value="<%= packageName != null ? packageName : "" %>">
-            <!-- Submit Button -->
+            naïve
             <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submit Booking</button>
         </form>
-        <!-- Package Name Display -->
         <%
             if (packageName != null) {
         %>

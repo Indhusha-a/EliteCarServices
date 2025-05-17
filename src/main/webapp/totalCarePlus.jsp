@@ -7,9 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Car Services - Total Care Plus Package</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Emoji Styles from the Original Reference -->
     <style type="text/css">
         img.wp-smiley, img.emoji {
             display: inline !important;
@@ -22,9 +20,6 @@
             background: none !important;
             padding: 0 !important;
         }
-    </style>
-    <!-- Custom Styles for the Service Package Section -->
-    <style type="text/css">
         .service-package {
             background-color: white;
             border-radius: 8px;
@@ -73,10 +68,16 @@
             margin: 0;
             line-height: 1.6;
         }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fadeInRight {
+            animation: fadeInRight 1.2s ease-out 0.3s forwards;
+        }
     </style>
 </head>
-<body class="bg-gray-100">
-<!-- JSP Authentication Check -->
+<body class="bg-blue-100">
 <%
     User user = (User) session.getAttribute("user");
     if (user == null) {
@@ -84,7 +85,6 @@
         return;
     }
 %>
-<!-- Navigation Bar (Using Tailwind CSS) -->
 <nav class="bg-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
         <a href="dashboard.jsp" class="text-3xl font-bold text-gray-800 flex items-center">
@@ -96,19 +96,15 @@
         </div>
     </div>
 </nav>
-<!-- Main Content -->
 <div class="container mx-auto px-4 py-6">
-    <!-- Header Section -->
-    <header class="text-center mb-6">
+    <header class="text-center mb-6 animate-fadeInRight">
         <h1 class="text-4xl font-bold text-gray-800">Car Vehicle Service Packages - Total Care Plus</h1>
     </header>
-    <!-- Service Package Section -->
-    <section class="service-package">
+    <section class="service-package animate-fadeInRight">
         <h2 class="text-4xl font-semibold text-blue-600 mb-4">Total Care Plus Package</h2>
         <p class="text-gray-700 leading-relaxed">
             We thrive in reinstating the automotive standards & hereby the package consists of a 139 point inspection checklist while ensuring not only mechanical but also the cosmetic exterior and the interior as well to look fresh and new. Our dedicated team will make your vehicle look fresh inside out in no time in line with manufacturer standards.
         </p>
-        <!-- Placeholder for the image -->
         <div class="container">
             <img src="images/package4.png" alt="Total Care Plus Package" class="service-image" width="450" height="450">
         </div>
@@ -136,7 +132,6 @@
             <li>Scan Report</li>
             <li>Battery Terminal Protector and Door Hinge Treatment</li>
         </ul>
-        <!-- Button Group -->
         <div class="flex space-x-4 mt-4">
             <form action="totalcareplus" method="post">
                 <input type="hidden" name="packageName" value="Total Care Plus">
@@ -146,7 +141,6 @@
         </div>
     </section>
 </div>
-<!-- Footer -->
 <footer class="bg-gray-800 text-white text-center py-4 mt-6">
     <p>© <%= new java.util.Date().getYear() + 1900 %> Elite Car Services - Sri Lanka’s Largest and Best Auto Service Network</p>
 </footer>

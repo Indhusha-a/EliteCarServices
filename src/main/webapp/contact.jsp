@@ -25,7 +25,7 @@
         <p>We’re here to help! If you have any questions or need assistance, please reach out to us using the contact information below.</p>
         <div class="mt-4">
             <p><strong>Support Email:</strong> support@elitecarservices.com</p>
-            <p><strong>Support Phone:</strong> 011 277 8857</p>
+            <p><strong>Support Phone:</strong> 011 2 8857</p>
             <p><strong>Operating Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
         </div>
         <div class="mt-6">

@@ -1,4 +1,4 @@
-package com.elitecarservices.servlet;
+package com.elitecarservices.model;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
